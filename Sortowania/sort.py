@@ -1,4 +1,4 @@
-import time
+# import time
 # start = time.time()
 # print("hello")
 # end = time.time()
@@ -55,5 +55,4 @@ def MergeSort(array):
 
 
 if __name__ == '__main__':
-    print(InsertSort([1, 43, -23, 23, 54, 23]))
-    print(MergeSort([1, 43, -23, 23, 54, 23]))
+    pass
