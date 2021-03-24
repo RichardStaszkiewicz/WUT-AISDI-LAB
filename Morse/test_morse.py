@@ -3,7 +3,7 @@ import pytest
 
 
 def test_read_file():
-    with open('text.txt', 'r') as handle:
+    with open('./Morse/text.txt', 'r') as handle:
         result = read_file(handle)
     answer = ['ala ma kota', 'a kot ma ale', 'a12b 3 c']
     assert result == answer
