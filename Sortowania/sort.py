@@ -4,6 +4,8 @@ import time
 # end = time.time()
 # print(end - start)
 # # answer is measured in seconds
+
+
 def InsertSort(array):
     size = len(array) - 1
     for i in range(1, size):
@@ -19,11 +21,39 @@ def InsertSort(array):
 def QuickSortREC():
     pass
 
+
 def QuickSortITR():
     pass
 
-def MergeSort():
-    pass
+
+def Consolidate(array1, array2):
+    p1 = 0
+    p2 = 0
+    answer = []
+    while (p1 < len(array1)) and (p2 < len(array2)):
+        if array1[p1] > array2[p2]:
+            answer.append(array2[p2])
+            p2 += 1
+        else:
+            answer.append(array1[p1])
+            p1 += 1
+    if p1 >= len(array1):
+        for x in array1[p1:]:
+            answer.append(x)
+    if p2 >= len(array2):
+        for x in array2[p2:]:
+            answer.append(x)
+
+    return answer
+
+
+def MergeSort(array):
+    if len(array) == 1:
+        return array
+    middle = len(array) // 2
+    return Consolidate(MergeSort(array[:middle]), MergeSort(array[middle:]))
+
 
 if __name__ == '__main__':
-    pass
+    print(InsertSort([1, 43, -23, 23, 54, 23]))
+    print(MergeSort([1, 43, -23, 23, 54, 23]))
