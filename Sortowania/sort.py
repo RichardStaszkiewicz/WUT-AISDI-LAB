@@ -4,8 +4,17 @@ import time
 # end = time.time()
 # print(end - start)
 # # answer is measured in seconds
-def InsertSort():
-    pass
+def InsertSort(array):
+    size = len(array) - 1
+    for i in range(1, size):
+        current = array[i]
+        j = i - 1
+        while (j >= 0) and (array[j] > current):
+            array[j + 1] = array[j]
+            j = j - 1
+        array[j + 1] = current
+    return array
+
 
 def QuickSortREC():
     pass
@@ -17,8 +26,4 @@ def MergeSort():
     pass
 
 if __name__ == '__main__':
-    print(time.time())
-    z = 0
-    for i in range(100000):
-        z = z+1
-    print(time.time())
+    pass
