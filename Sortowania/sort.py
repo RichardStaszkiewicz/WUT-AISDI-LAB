@@ -7,7 +7,7 @@ import time
 
 
 def InsertSort(array):
-    size = len(array) - 1
+    size = len(array)
     for i in range(1, size):
         current = array[i]
         j = i - 1
