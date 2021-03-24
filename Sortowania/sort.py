@@ -38,10 +38,10 @@ def Consolidate(array1, array2):
             answer.append(array1[p1])
             p1 += 1
     if p1 >= len(array1):
-        for x in array1[p1:]:
+        for x in array2[p2:]:
             answer.append(x)
     if p2 >= len(array2):
-        for x in array2[p2:]:
+        for x in array1[p1:]:
             answer.append(x)
 
     return answer
