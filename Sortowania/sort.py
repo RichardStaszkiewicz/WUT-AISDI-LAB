@@ -17,7 +17,7 @@ def InsertSort(array):
         array[j + 1] = current
 
 
-def quick_sort_recursion(array, start_point=None, end_point=None):
+def quick_sort_recursion(array, start_point, end_point):
     if end_point - start_point > 0:
         split_point = divide_table(array, start_point, end_point)
         quick_sort_recursion(array, start_point, split_point - 1)
@@ -37,8 +37,8 @@ def divide_table(array, start_point, end_point):
     return actual_place
 
 
-def swap(array, first_position, second_position):
-    array[first_position], array[second_position] = array[second_position], array[first_position]
+def swap(array, position1, position2):
+    array[position1], array[position2] = array[position1], array[position2]
 
 
 def quick_sort_iterative(array, start_point, end_point):
