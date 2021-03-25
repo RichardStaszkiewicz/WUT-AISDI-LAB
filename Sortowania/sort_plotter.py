@@ -11,8 +11,20 @@ def exe_time(function):
     def wrapper(*args, **kwargs):
         start = time.time()
         function(*args, **kwargs)
-        return start - time.time()
+        return time.time() - start
     return wrapper
+
+# @exe_time
+# sort.MergeSort
+
+# @exe_time
+# sort.quick_sort_iterative
+
+# @exe_time
+# sort.quick_sort_recursion
+
+# @exe_time
+# sort.InsertSort
 
 
 def sorted_array():
@@ -22,16 +34,20 @@ def sorted_array():
     MS = []
     for amount in observations:
         array = [x for x in range(0, amount)]
-        IS.append(exe_time(sort.InsertSort(array)))
+        x = exe_time(sort.InsertSort)(array)
+        IS.append(x)
         array = [x for x in range(0, amount)]
-        QS_REC.append(exe_time(sort.quick_sort_recursion(array, 0, amount)))
+        x = exe_time(sort.quick_sort_recursion)(array, 0, amount-1)
+        QS_REC.append(x)
         array = [x for x in range(0, amount)]
-        QS_IT.append(exe_time(sort.quick_sort_iterative(array, 0, amount)))
+        x = exe_time(sort.quick_sort_iterative)(array, 0, amount-1)
+        QS_IT.append(x)
         array = [x for x in range(0, amount)]
-        MS.append(exe_time(sort.MergeSort(array)))
+        x = exe_time(sort.MergeSort)(array)
+        MS.append(x)
     plt.plot(observations, IS, '-r', label="Insert Sort", markersize=3)
-    plt.plot(observations, QS_REC, '-y', label="Quick Sort, Recursive", markersize=3)
-    plt.plot(observations, QS_IT, '-b', label="Quick Sort, Iterative", markersize=3)
+    plt.plot(observations, QS_REC, '-y', label="Quick Sort, Recursive")
+    plt.plot(observations, QS_IT, '-b', label="Quick Sort, Iterative")
     plt.plot(observations, MS, '-g', label="Merge Sort", markersize=3)
     plt.legend()
     plt.title(label='Ordered array', loc='center')
