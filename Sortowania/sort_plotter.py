@@ -3,8 +3,7 @@ import time
 import sort
 
 
-# observations = [10, 25, 50, 100, 500, 1000, 5000, 10000, 20000]
-observations = [10, 25, 50]
+observations = [10, 25, 50, 100, 500, 1000, 5000, 10000, 25000, 50000, 100000]
 
 
 def exe_time(function):
@@ -77,11 +76,14 @@ def PT_file_sorting():
     plt.plot(observations, QS_REC, '-y', label="Quick Sort, Recursive")
     plt.plot(observations, QS_IT, '-b', label="Quick Sort, Iterative")
     plt.plot(observations, MS, '-g', label="Merge Sort", markersize=3)
+    plt.xscale('log')
+    plt.yscale('log')
     plt.legend()
-    plt.title(label='Ordered array', loc='center')
-    plt.gcf().savefig('Ordered Array', format='png')
+    plt.title(label='Pan Tadeusz text file', loc='center')
+    plt.gcf().savefig('Pan Tadeusz text file.png', format='png')
     return
 
 
 if __name__ == "__main__":
+    sorted_array()
     PT_file_sorting()
