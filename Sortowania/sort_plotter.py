@@ -14,18 +14,6 @@ def exe_time(function):
         return time.time() - start
     return wrapper
 
-# @exe_time
-# sort.MergeSort
-
-# @exe_time
-# sort.quick_sort_iterative
-
-# @exe_time
-# sort.quick_sort_recursion
-
-# @exe_time
-# sort.InsertSort
-
 
 def sorted_array():
     IS = []
@@ -55,5 +43,45 @@ def sorted_array():
     return
 
 
+def PT_read(handle, amount):
+    data = []
+    while len(data) < amount:
+        line = handle.readline()
+        line = line.split(' ')
+        for token in line:
+            data.append(token)
+    return data[:amount]
+
+
+def PT_file_sorting():
+    IS = []
+    QS_REC = []
+    QS_IT = []
+    MS = []
+    for amount in observations:
+        with open('pan-tadeusz.txt', 'r') as handle:
+            array = PT_read(handle, amount)
+        backup = array.copy()
+        x = exe_time(sort.InsertSort)(array)
+        IS.append(x)
+        array = backup.copy()
+        x = exe_time(sort.quick_sort_recursion)(array, 0, amount-1)
+        QS_REC.append(x)
+        array = backup.copy()
+        x = exe_time(sort.quick_sort_iterative)(array, 0, amount-1)
+        QS_IT.append(x)
+        array = backup.copy()
+        x = exe_time(sort.MergeSort)(array)
+        MS.append(x)
+    plt.plot(observations, IS, '-r', label="Insert Sort", markersize=3)
+    plt.plot(observations, QS_REC, '-y', label="Quick Sort, Recursive")
+    plt.plot(observations, QS_IT, '-b', label="Quick Sort, Iterative")
+    plt.plot(observations, MS, '-g', label="Merge Sort", markersize=3)
+    plt.legend()
+    plt.title(label='Ordered array', loc='center')
+    plt.gcf().savefig('Ordered Array', format='png')
+    return
+
+
 if __name__ == "__main__":
-    sorted_array()
+    PT_file_sorting()
