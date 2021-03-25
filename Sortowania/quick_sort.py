@@ -37,8 +37,4 @@ def quick_sort_iterative(array, start_point, end_point):
 
 
 if __name__ == "__main__":
-    k = [2, 6, 8, 1, 11, 5]
-    quick_sort_iterative(k, 0, 5)
-    print(k)
-    quick_sort_recursion(k, 0, 5)
-    print(k)
+    pass

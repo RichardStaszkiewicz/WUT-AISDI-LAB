@@ -44,4 +44,4 @@ def test_MS_unoptimal():
 
 
 if __name__ == "__main__":
-    test_MS_normal_n10()
+    pass
