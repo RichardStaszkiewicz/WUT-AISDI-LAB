@@ -3,7 +3,7 @@ import time
 import sort
 
 
-observations = [10, 25, 50, 100, 500, 1000, 5000, 10000, 25000, 50000, 100000]
+observations = [10, 25, 50, 100, 500, 1000, 5000, 10000, 25000, 50000]
 
 
 def exe_time(function):
@@ -38,7 +38,8 @@ def sorted_array():
     plt.plot(observations, MS, '-g', label="Merge Sort", markersize=3)
     plt.legend()
     plt.title(label='Ordered array', loc='center')
-    plt.gcf().savefig('Ordered Array', format='png')
+    plt.gcf().savefig('Ordered Array.png', format='png')
+    plt.clf()
     return
 
 
@@ -81,6 +82,7 @@ def PT_file_sorting():
     plt.legend()
     plt.title(label='Pan Tadeusz text file', loc='center')
     plt.gcf().savefig('Pan Tadeusz text file.png', format='png')
+    plt.clf()
     return
 
 
