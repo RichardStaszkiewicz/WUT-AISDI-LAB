@@ -27,6 +27,6 @@ def quick_sort_linear():
 
 
 if __name__ == "__main__":
-    k = [7, 6, 5, 4, 3, 2, 1]
+    k = [7, 6, 5, 4, 3, 2]
     quick_sort_recursion(k, 0, 6)
     print(k)

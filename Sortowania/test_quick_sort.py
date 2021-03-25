@@ -1,4 +1,4 @@
-from Quick_sort import quick_sort_recursion, swap
+from quick_sort import quick_sort_recursion, swap
 from random import shuffle
 
 
@@ -21,9 +21,9 @@ def test_swap_3():
 
 
 def test_quick_sort_recursion_normal():
-    table = [4, 5, 2, 1, 8, 7]
-    quick_sort_recursion(table, 0, 5)
-    assert table == [1, 2, 4, 5, 7, 8]
+    table = [4, 5, 2, 1, 8]
+    quick_sort_recursion(table, 0, 4)
+    assert table == [1, 2, 4, 5, 8]
 
 
 def test_quick_sort_recursion_sorted_small():
