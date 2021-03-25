@@ -22,11 +22,23 @@ def swap(array, first_position, second_position):
     array[first_position], array[second_position] = array[second_position], array[first_position]
 
 
-def quick_sort_linear():
-    pass
+def quick_sort_iterative(array, start_point, end_point):
+    stack = [start_point, end_point]
+    while stack:
+        end_point = stack.pop()
+        start_point = stack.pop()
+        split_point = divide_table(array, start_point, end_point)
+        if split_point - 1 > start_point:
+            stack.append(start_point)
+            stack.append(split_point - 1)
+        if split_point + 1 < end_point:
+            stack.append(split_point + 1)
+            stack.append(end_point)
 
 
 if __name__ == "__main__":
-    k = [7, 6, 5, 4, 3, 2]
-    quick_sort_recursion(k, 0, 6)
+    k = [2, 6, 8, 1, 11, 5]
+    quick_sort_iterative(k, 0, 5)
+    print(k)
+    quick_sort_recursion(k, 0, 5)
     print(k)
