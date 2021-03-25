@@ -15,7 +15,6 @@ def InsertSort(array):
             array[j + 1] = array[j]
             j = j - 1
         array[j + 1] = current
-    return array
 
 
 def QuickSortREC():
