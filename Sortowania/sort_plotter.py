@@ -8,9 +8,12 @@ observations = [10, 25, 50, 100, 500, 1000, 5000, 10000, 25000, 50000]
 
 def exe_time(function):
     def wrapper(*args, **kwargs):
-        start = time.time()
-        function(*args, **kwargs)
-        return time.time() - start
+        summ = 0
+        for _ in range(3):
+            start = time.time()
+            function(*args, **kwargs)
+            summ += time.time() - start
+        return summ / 3
     return wrapper
 
 
