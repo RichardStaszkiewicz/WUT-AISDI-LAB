@@ -47,6 +47,8 @@ def quick_sort_iterative(array, start_point, end_point):
         end_point = stack.pop()
         start_point = stack.pop()
         split_point = divide_table(array, start_point, end_point)
+        # Zobaczyć która część jest większa / mniejsza
+        # większą na stos, mniejsza iteracyjnie
         if split_point - 1 > start_point:
             stack.append(start_point)
             stack.append(split_point - 1)
