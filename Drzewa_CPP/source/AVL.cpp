@@ -1,15 +1,7 @@
 #include <iostream>
+#include "AVL.hpp"
 
 using namespace std;
-
-class TreeNode
-{
-    public:
-        double value;
-        TreeNode *left_son;
-        TreeNode *right_son;
-        int step;
-};
 
 int step(TreeNode *node)
 {
@@ -121,11 +113,11 @@ bool find(TreeNode *node, double value)
     }
     if(node->value > value)
     {
-        if(node->left_son == nullptr) 
+        if(node->left_son == nullptr)
         {
             return false;
         }
-        else 
+        else
         {
             return find(node->left_son, value);
         }
