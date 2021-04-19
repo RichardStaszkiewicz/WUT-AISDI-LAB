@@ -3,25 +3,21 @@
 
 using namespace std;
 
-int step(TreeNode *node)
+int step(const TreeNode *node)
 {
-    if(node == NULL)
-    {
-        return 0;
-    }
+    if(node == NULL) return 0;
     return node->step;
 }
 
-int balance(TreeNode *node)
+
+int balance(const TreeNode *node)
 {
-    if(node == NULL)
-    {
-        return 0;
-    }
+    if(node == NULL) return 0;
     return step(node->left_son) - step(node->right_son);
 }
 
-TreeNode* next_node(double new_value)
+
+TreeNode* next_node(const double new_value)
 {
     TreeNode* new_node = new TreeNode();
     new_node->value = new_value;
@@ -30,6 +26,7 @@ TreeNode* next_node(double new_value)
     new_node->step = 1;
     return new_node;
 }
+
 
 TreeNode *right_rotate(TreeNode *place)
 {
@@ -47,6 +44,7 @@ TreeNode *right_rotate(TreeNode *place)
     return place2;
 }
 
+
 TreeNode *left_rotate(TreeNode *place)
 {
     TreeNode *place2 = place->right_son;
@@ -63,12 +61,11 @@ TreeNode *left_rotate(TreeNode *place)
     return place2;
 }
 
-TreeNode *add_value(TreeNode *node, double value)
+
+TreeNode *add_value(TreeNode *node, const double &value)
 {
-    if(node == NULL)
-    {
-        return next_node(value);
-    }
+    if(node == NULL) return next_node(value);
+
     if(value > node->value)
     {
         node->right_son = add_value(node->right_son, value);
@@ -77,10 +74,8 @@ TreeNode *add_value(TreeNode *node, double value)
     {
         node->left_son = add_value(node->left_son, value);
     }
-    else
-    {
-        return node;
-    }
+    else return node;
+
     node->step = 1 + max(step(node->right_son), step(node->left_son));
 
     int bal = balance(node);
@@ -105,36 +100,24 @@ TreeNode *add_value(TreeNode *node, double value)
     return node;
 }
 
-bool find(TreeNode *node, double value)
+
+bool find(const TreeNode *node, const double &value)
 {
-    if(node->value == value)
-    {
-        return true;
-    }
+    if(node->value == value) return true;
     if(node->value > value)
     {
-        if(node->left_son == nullptr)
-        {
-            return false;
-        }
-        else
-        {
-            return find(node->left_son, value);
-        }
+        if(node->left_son == nullptr) return false;
+        else return find(node->left_son, value);
     }
     else
     {
-        if(node->right_son == nullptr)
-        {
-            return false;
-        }
-        else
-        {
-            return find(node->right_son, value);
-        }
+        if(node->right_son == nullptr) return false;
+        else return find(node->right_son, value);
     }
 }
-void preOrder(TreeNode *root)
+
+
+void preOrder(const TreeNode *root)
 {
     if(root != NULL)
     {
@@ -143,20 +126,17 @@ void preOrder(TreeNode *root)
         preOrder(root->right_son);
     }
 }
-void print_AVL(TreeNode *node, int depth)
+
+
+void print_AVL(const TreeNode *node, const int &depth)
 {
-    if(node->left_son != nullptr)
-    {
-        print_AVL(node->left_son, depth+1);
-    }
-    for(int i = 0; i < depth * 2; i++)
-    {
-        cout<<" ";
-    }
+    if(node->left_son != nullptr) print_AVL(node->left_son, depth+1);
+
+    for(int i = 0; i < depth * 2; i++) cout<<" ";
+
     cout<<node->value<<endl;
-    if(node->right_son != nullptr)
-    {
-        print_AVL(node->right_son, depth+1);
-    }
+
+    if(node->right_son != nullptr) print_AVL(node->right_son, depth+1);
+
     return;
 }
