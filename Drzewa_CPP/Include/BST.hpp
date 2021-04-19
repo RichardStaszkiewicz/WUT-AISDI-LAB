@@ -1,4 +1,4 @@
-//#ifdef BST
+// #ifdef BST
 
 #define BST
 
@@ -12,7 +12,7 @@ class BST_node
         BST_node(const double &value);
         void print_as_root(const int &depth);
         void add_value(const double& value);
-        BST_node find_value(const double& value);
+        bool find_value(const double& value);
 };
 
 

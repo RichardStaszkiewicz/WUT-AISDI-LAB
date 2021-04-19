@@ -9,13 +9,18 @@ int main()
     root.add_value(11);
     root.add_value(45);
     root.add_value(86);
+    root.add_value(56);
+    root.add_value(56);
     root.print_as_root(0);
-    BST_node result = root.find_value(11);
-    if(result.parent == nullptr) std::cout << "Not in key values\n";
-    else std::cout << "Parent is node with value: " << result.parent->node_value <<'\n';
-    result = root.find_value(-13);
-    if(result.parent == nullptr) std::cout << "Not in key values\n";
-    else std::cout << "Parent is node with value: " << result.parent->node_value <<'\n';
+    BST_node root2{12};
+    root2.add_value(19);
+    root2.add_value(-11);
+    root2.add_value(19);
+    root2.print_as_root(0);
+    if(!root.find_value(11)) std::cout << "Not in key values\n";
+    else std::cout << "Key in a tree";
+    if(!root.find_value(-13)) std::cout << "Not in key values\n";
+    else std::cout << "Key in a tree";
 
 
     return 0;

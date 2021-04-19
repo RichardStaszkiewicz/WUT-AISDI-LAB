@@ -1,7 +1,6 @@
-// #ifdef AVL
+// #ifdef
 
 #define AVL
-#include <BST.hpp>
 
 class TreeNode
 {

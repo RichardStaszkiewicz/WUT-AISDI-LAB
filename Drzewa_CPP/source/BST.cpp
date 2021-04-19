@@ -36,18 +36,19 @@ void BST_node::add_value(const double& value)
     return;
 }
 
-BST_node BST_node::find_value(const double& value)
+// można rozszerzyć do zwracania wierzchołka
+bool BST_node::find_value(const double& value)
 {
     if(node_value == value)
-        return *this;
+        return true;
     if(node_value > value)
     {
-        if(son_left == nullptr) return BST_node(value);
+        if(son_left == nullptr) return false;
         else return son_left->find_value(value);
     }
     else
     {
-        if(son_right == nullptr) return BST_node(value);
+        if(son_right == nullptr) return false;
         else return son_right->find_value(value);
     }
 }
