@@ -56,10 +56,12 @@ class heappy
             sinking(0);
             return std::make_pair(min.key, min.val);
         }
+        std::pair <KEY, DATA> top(){return std::make_pair(heap[0].key, heap[0].val);}
         void print()
         {
             for(int i = 0; i < heap.size(); i++)
                 std::cout << "[" << heap[i].key << ", " << heap[i].val << "] ";
+            std::cout << '\n';
             return;
         }
 };
