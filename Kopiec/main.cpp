@@ -5,11 +5,11 @@
 std::vector <double> check2(const int &amount)
 {
     std::vector <double> ans;
-    heappy <int, int, 2> h;
+    heappy <double, int, 2> h;
 
     // Tworzenie kopca przez wstawianie
     auto start = std::chrono::high_resolution_clock::now();
-    for(int i = 0; i < amount; i++) h.insert(i, i);
+    for(int i = 0; i < amount; i++) h.insert(rand(), i);
     std::chrono::duration<double> elapsed = std::chrono::high_resolution_clock::now() - start;
     ans.push_back(elapsed.count());
 
