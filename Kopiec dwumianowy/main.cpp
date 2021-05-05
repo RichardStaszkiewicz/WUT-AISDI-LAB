@@ -2,6 +2,8 @@
 #include <chrono>
 #include "binomial_heap.hpp"
 
+const int MAXN = 150000000;
+
 int main()
 {
     std::ofstream out;
@@ -12,7 +14,7 @@ int main()
     auto start = std::chrono::high_resolution_clock::now();
     double cumulative_pop = 0;
 
-    for(int i = 1; i <= 1000000; i++)
+    for(int i = 1; i <= MAXN; i++)
     {
         if(i % 1000 == 0)
         {
@@ -33,7 +35,7 @@ int main()
     std::priority_queue <double> PQ;
     start = std::chrono::high_resolution_clock::now();
     cumulative_pop = 0;
-    for(int i = 1; i <= 1000000; i++)
+    for(int i = 1; i <= MAXN; i++)
     {
         if(i % 1000 == 0)
         {
