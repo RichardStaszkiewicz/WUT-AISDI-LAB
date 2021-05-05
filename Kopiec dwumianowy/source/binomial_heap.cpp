@@ -3,6 +3,15 @@
 
 using namespace std;
 
+// btree_Node::~btree_Node()
+// {
+//     if(son != nullptr) delete this->son;
+//     if(sibling != nullptr) delete this->sibling;
+//     delete sibling;
+//     delete son;
+//     delete parent;
+// }
+
 int btree_Node::get_degree() // zwraca stopien
 {
     return degree;
@@ -76,7 +85,7 @@ btree_Node* bheap::merge(btree_Node *node1, btree_Node *node2) // laczy 2 wierzc
         }
         else
         {
-            btree_Node *actual = nullptr; 
+            btree_Node *actual = nullptr;
             btree_Node *next = nullptr;
             btree_Node *previous = nullptr;
             btree_Node *current = nullptr;
@@ -239,15 +248,15 @@ double bheap::pop() // usuwa i zwraca najmniejszy element w kopcu, laczy pozosta
     return minimum;
 }
 
-int main()
-{
-    bheap heap;
-    heap.insert(10);
-    heap.insert(30);
-    heap.insert(80);
-    heap.insert(5);
-    heap.insert(1);
-    cout<<heap.pop()<<endl;
-    cout<<heap.pop()<<endl;
-    cout<<heap.pop()<<endl;
-}
+// int main()
+// {
+//     bheap heap;
+//     heap.insert(10);
+//     heap.insert(30);
+//     heap.insert(80);
+//     heap.insert(5);
+//     heap.insert(1);
+//     cout<<heap.pop()<<endl;
+//     cout<<heap.pop()<<endl;
+//     cout<<heap.pop()<<endl;
+// }
