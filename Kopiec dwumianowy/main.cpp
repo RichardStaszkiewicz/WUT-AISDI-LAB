@@ -2,7 +2,7 @@
 #include <chrono>
 #include "binomial_heap.hpp"
 
-const int MAXN = 150000000;
+const int MAXN = 15000000;
 
 int main()
 {
