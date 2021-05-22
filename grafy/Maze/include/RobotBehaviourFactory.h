@@ -1,6 +1,7 @@
 #pragma once
 #include "RobotBehaviourBase.h"
 #include "Robot.h"
+#include <memory>
 class RobotBehaviourFactory
 {
 public:

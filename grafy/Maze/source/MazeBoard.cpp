@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <exception>
 #include <stdexcept>
 #include "Maze.h"
 #include "MazeBoard.h"
@@ -63,7 +62,7 @@ void MazeBoard::read(std::string const fileName)
 	fs >> ySize;
 
 	if (xSize < Robot::minMazeXSize || xSize > Robot::maxMazeXSize || ySize < Robot::minMazeYSize || ySize > Robot::maxMazeYSize)
-		throw std::exception("Incorrect maze size.");
+		throw std::runtime_error("Incorrect maze size.");
 
 	size_t xStart;
 	size_t yStart;
@@ -75,7 +74,7 @@ void MazeBoard::read(std::string const fileName)
 	fs >> direction;
 
 	if (xStart < (size_t)0 || xStart >= xSize || yStart < 0 || yStart >= ySize)
-		throw std::exception("Incorrect robot start field.");
+		throw std::runtime_error("Incorrect robot start field.");
 
 	switch (direction)
 	{
@@ -92,7 +91,7 @@ void MazeBoard::read(std::string const fileName)
 		startDirection = E;
 		break;
 	default:
-		throw std::exception("Incorrect robot start direction.");
+		throw std::runtime_error("Incorrect robot start direction.");
 	}
 
 	init(xSize, ySize, { xStart, yStart }, startDirection);
@@ -104,7 +103,7 @@ void MazeBoard::read(std::string const fileName)
 			int isWall;
 			fs >> isWall;
 			if (isWall != 0 && isWall != 1)
-				throw std::exception( "Incorrect is vertical wall (expected: 0, 1)." );
+				throw std::runtime_error( "Incorrect is vertical wall (expected: 0, 1)." );
 			if( isWall == 1 )
 				walls.setWallE({ x, y });
 			//_isVerticalWalls[x][y] = isWall == 1;
@@ -117,7 +116,7 @@ void MazeBoard::read(std::string const fileName)
 			int isWall;
 			fs >> isWall;
 			if (isWall != 0 && isWall != 1)
-				throw std::exception("Incorrect is horizontal wall (expected: 0, 1).");
+				throw std::runtime_error("Incorrect is horizontal wall (expected: 0, 1).");
 			if (isWall == 1)
 				walls.setWallS({ x, y });
 			//_isHorizontalWalls[x][y] = isWall == 1;
@@ -171,7 +170,7 @@ void MazeBoard::dispaly(std::ostream & ostream) const
 					ostream << "E";
 					break;
 				default:
-					throw std::exception("Incorrect direction.");
+					throw std::runtime_error("Incorrect direction.");
 				}
 			}
 			else
@@ -189,7 +188,7 @@ void MazeBoard::dispaly(std::ostream & ostream) const
 			else
 			{
 				if (visibleWalls.isWallE({ x,y }))
-					throw std::exception("Wall in invalid position.");
+					throw std::runtime_error("Wall in invalid position.");
 				ostream << " ";
 			}
 		}
@@ -211,7 +210,7 @@ void MazeBoard::dispaly(std::ostream & ostream) const
 			else
 			{
 				if (visibleWalls.isWallS({ x,y }))
-					throw std::exception("Wall in invalid position.");
+					throw std::runtime_error("Wall in invalid position.");
 				ostream << "   ";
 			}
 			ostream << "+";
@@ -252,9 +251,9 @@ void MazeBoard::setRobotToStartPosition()
 void MazeBoard::teleportRobot(Position const& position)
 {
 	if (position._x < 0 || position._x >= xSize() || position._y < 0 || position._y >= ySize())
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	if (!seen(position))
-		throw std::exception("The field was not seen.");
+		throw std::runtime_error("The field was not seen.");
 	cost += abs((long)(position._x) - (long)(_robotPosition._x));
 	cost += abs((long)(position._y) - (long)(_robotPosition._y));
 	_robotPosition = position;
@@ -429,9 +428,9 @@ unsigned long MazeBoard::getCost()
 void MazeBoard::moveRobotN()
 {
 	if (_robotPosition._y <= 0)
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	if (walls.isWallN({ _robotPosition._x, _robotPosition._y }))
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	--_robotPosition._y;
 	visit(_robotPosition);
 }
@@ -439,9 +438,9 @@ void MazeBoard::moveRobotN()
 void MazeBoard::moveRobotS()
 {
 	if ((size_t)(_robotPosition._y) >= ySize()-1)
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	if (walls.isWallS({ _robotPosition._x, _robotPosition._y }))
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	++_robotPosition._y;
 	visit(_robotPosition);
 }
@@ -449,9 +448,9 @@ void MazeBoard::moveRobotS()
 void MazeBoard::moveRobotW()
 {
 	if (_robotPosition._x <= 0)
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	if (walls.isWallW({ _robotPosition._x, _robotPosition._y }))
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	--_robotPosition._x;
 	visit(_robotPosition);
 }
@@ -459,9 +458,9 @@ void MazeBoard::moveRobotW()
 void MazeBoard::moveRobotE()
 {
 	if ((size_t)(_robotPosition._x) >= xSize() - 1)
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	if (walls.isWallE({ _robotPosition._x, _robotPosition._y }))
-		throw std::exception("Invalid move.");
+		throw std::runtime_error("Invalid move.");
 	++_robotPosition._x;
 	visit(_robotPosition);
 }
