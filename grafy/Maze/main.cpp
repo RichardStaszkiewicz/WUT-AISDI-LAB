@@ -1,3 +1,4 @@
+// call: ./program [-d] [Path to labyrinth description]
 #include <iostream>
 #include <string>
 #include <ctime>

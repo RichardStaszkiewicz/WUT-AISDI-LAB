@@ -17,3 +17,25 @@ private:
 	Robot & robot;
 };
 
+class VRecord
+{
+	public:
+		Position pos;
+		//Direction dir;
+		double cost;
+};
+
+class DijkstraNode
+{
+	public:
+		double value = INT_MAX;
+		Position parent = Position{INT_MAX, INT_MAX};
+};
+
+class CMP
+{
+    public:
+        bool operator() (VRecord rhs, VRecord lhs){
+            return rhs.cost > lhs.cost;
+        }
+};
