@@ -2,6 +2,7 @@
 #include <utility>
 #include <vector>
 #include "Robot.h"
+#include "Position.h"
 
 class RobotBehaviourBase
 {

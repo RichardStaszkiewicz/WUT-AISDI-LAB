@@ -30,11 +30,16 @@ std::pair <double, std::vector<Position>> RobotBehaviour::explore(Position const
 	std::vector<Position> exits;
 
 	// set the robots direction always towards east
-	while (startDirection != Direction::E) robot.turnLeft();
+	if (startDirection == Direction::N) robot.turnRight();
+	if (startDirection == Direction::S) robot.turnLeft();
+	if (startDirection == Direction::E) {robot.turnRight(); robot.turnRight();}
 
+	int it = 0;
 	// Dijkstra to fill up the graph
 	while(!vert.empty())
 	{
+		std::cout << it << '\n';
+		it++;
 		VRecord now = vert.top();
 		robot.teleport(now.pos);
 

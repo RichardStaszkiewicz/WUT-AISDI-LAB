@@ -5,6 +5,7 @@
 #include "MazeBoard.h"
 #include "RobotSim.h"
 #include "RobotBehaviourFactory.h"
+#include "Position.h"
 
 int main( int argc, char * argv[])
 {
@@ -14,6 +15,7 @@ int main( int argc, char * argv[])
 		std::cerr << "Incorrect number of parameters." << std::endl;
 		return -2;
 	}
+
 	bool displayDebugInfo = false;
 	if (argc == 3)
 	{
@@ -21,6 +23,7 @@ int main( int argc, char * argv[])
 		if (par == "-d")
 			displayDebugInfo = true;
 	}
+
 	MazeBoard maze( displayDebugInfo);
 	maze.read( argv[argc-1]);
 	RobotBehaviourFactory robotBehaviourFactory;
@@ -31,6 +34,7 @@ int main( int argc, char * argv[])
 
 	maze.dispaly(std::cout);
 
+	std::cout << "last phase\n";
 	std::pair <double, std::vector<Position>> answer = robot.explore();
 
 	// if (!robot.explore())
