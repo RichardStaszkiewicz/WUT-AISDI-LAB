@@ -6,6 +6,7 @@
 #include "Position.h"
 #include <memory>
 #include <utility>
+#include <string>
 #include <vector>
 
 class RobotSim : public Robot
@@ -28,7 +29,7 @@ public:
 
 	virtual bool isInExit() const override;
 
-	std::pair <double, std::vector<Position>> explore();
+	std::pair <double, std::vector<Position>> explore(const std::string &algorithm=std::string("D"));
 private:
 	MazeBoard & _mazeBoard;
 

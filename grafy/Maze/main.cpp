@@ -34,8 +34,7 @@ int main( int argc, char * argv[])
 
 	maze.dispaly(std::cout);
 
-	std::cout << "last phase\n";
-	std::pair <double, std::vector<Position>> answer = robot.explore();
+	std::pair <double, std::vector<Position>> answer = robot.explore(std::string("A*"));
 
 	// if (!robot.explore())
 	// {

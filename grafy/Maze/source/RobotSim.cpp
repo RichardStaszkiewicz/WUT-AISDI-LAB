@@ -65,7 +65,11 @@ bool RobotSim::isInExit() const
 	return _mazeBoard.isInExit();
 }
 
-std::pair <double, std::vector<Position>> RobotSim::explore()
+std::pair <double, std::vector<Position>> RobotSim::explore(const std::string &algorithm)
 {
-	return robot->explore(_mazeBoard.getStartPosition(), _mazeBoard.getStartDirection());
+	if(algorithm == "A*")
+		return robot->exploreA(_mazeBoard.getStartPosition(), _mazeBoard.getStartDirection(), _mazeBoard.xSize(), _mazeBoard.ySize());
+
+	// In every other case, perform Dijkstra
+	return robot->exploreD(_mazeBoard.getStartPosition(), _mazeBoard.getStartDirection());
 }
