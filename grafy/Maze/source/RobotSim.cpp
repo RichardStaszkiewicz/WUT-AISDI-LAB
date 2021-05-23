@@ -1,3 +1,6 @@
+#include <vector>
+#include <utility>
+#include "Position.h"
 #include "RobotSim.h"
 #include "MazeBoard.h"
 
@@ -62,8 +65,7 @@ bool RobotSim::isInExit() const
 	return _mazeBoard.isInExit();
 }
 
-bool RobotSim::explore()
+std::pair <double, std::vector<Position>> RobotSim::explore()
 {
-	robot->explore(_mazeBoard.getStartPosition(), _mazeBoard.getStartDirection());
-	return _mazeBoard.isInExit();
+	return robot->explore(_mazeBoard.getStartPosition(), _mazeBoard.getStartDirection());
 }

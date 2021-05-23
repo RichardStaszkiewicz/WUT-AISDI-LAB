@@ -31,19 +31,23 @@ int main( int argc, char * argv[])
 
 	maze.dispaly(std::cout);
 
-	if (!robot.explore())
-	{
-		maze.dispaly(std::cout);
-		if( displayDebugInfo)
-			std::cout << "Exploration error. " << std::endl;
-		std::cout << -1 << std::endl;
-		return -1;
-	}
+	std::pair <double, std::vector<Position>> answer = robot.explore();
+
+	// if (!robot.explore())
+	// {
+	// 	maze.dispaly(std::cout);
+	// 	if( displayDebugInfo)
+	// 		std::cout << "Exploration error. " << std::endl;
+	// 	std::cout << -1 << std::endl;
+	// 	return -1;
+	// }
 
 	maze.dispaly(std::cout);
 	if (displayDebugInfo)
 		std::cout << "Exploration success. " << std::endl;
 
-	std::cout << maze.getCost() << std::endl;
+	//std::cout << maze.getCost() << std::endl;
+	std::cout << "Minimum distance: " << answer.first << '\n';
+	for(int i = 0; i < answer.second.size(); i++) std::cout << answer.second[i] << std::endl;
 	return 0;
 }

@@ -3,7 +3,10 @@
 #include "RobotBehaviourBase.h"
 #include "MazeBoard.h"
 #include "RobotBehaviourFactory.h"
+#include "Position.h"
 #include <memory>
+#include <utility>
+#include <vector>
 
 class RobotSim : public Robot
 {
@@ -25,7 +28,7 @@ public:
 
 	virtual bool isInExit() const override;
 
-	bool explore();
+	std::pair <double, std::vector<Position>> explore();
 private:
 	MazeBoard & _mazeBoard;
 
