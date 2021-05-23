@@ -12,6 +12,11 @@ bool Position::operator==(Position const& position)const
 	return _x == position._x && _y == position._y;
 }
 
+bool Position::operator!=(Position const& position)const
+{
+	return _x != position._x || _y != position._y;
+}
+
 std::ostream& operator<<(std::ostream & stream, Position const& position)
 {
 	stream << "(" << position._x << "," << position._y << ")";

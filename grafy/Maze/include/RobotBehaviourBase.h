@@ -8,6 +8,6 @@ public:
 	{
 	}
 	virtual void reinit() = 0;
-	virtual void explore(Position const& startPosition, Direction const & startDirection) = 0;
+	virtual std::pair <double, std::vector<Position>> explore(Position const& startPosition, Direction const & startDirection) = 0;
 };
 

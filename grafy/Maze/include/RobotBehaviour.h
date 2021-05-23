@@ -11,7 +11,7 @@ public:
 
 	virtual void reinit() override;
 
-	virtual void explore(Position const& startPosition, Direction const & startDirection) override;
+	virtual std::pair <double, std::vector<Position>> explore(Position const& startPosition, Direction const & startDirection) override;
 
 private:
 	Robot & robot;

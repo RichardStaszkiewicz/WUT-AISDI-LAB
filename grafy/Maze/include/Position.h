@@ -9,6 +9,7 @@ public:
 	Position(size_t const x, size_t const y);
 
 	bool operator==(Position const& position)const;
+	bool operator!=(Position const& position)const;
 
 	size_t _x;
 	size_t _y;
