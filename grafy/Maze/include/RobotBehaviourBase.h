@@ -1,4 +1,6 @@
 #pragma once
+#include <utility>
+#include <vector>
 #include "Robot.h"
 
 class RobotBehaviourBase

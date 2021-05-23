@@ -1,4 +1,7 @@
 #pragma once
+#include <climits>
+#include <vector>
+#include <utility>
 #include "RobotBehaviourBase.h"
 #include "Robot.h"
 #include "Position.h"
